@@ -7,7 +7,6 @@ import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
-import org.junit.AfterClass;
 
 public class LoginSteps {
 
@@ -15,11 +14,9 @@ public class LoginSteps {
     public HomePage homePage;
     public AssertionHelper assertionHelper;
     private final GetExcel massa;
-    public ScenarioContext scenarioContext;
 
 
     public LoginSteps() {
-        scenarioContext = new ScenarioContext();
         loginPage = new LoginPage();
         homePage = new HomePage();
         assertionHelper = new AssertionHelper();
@@ -36,6 +33,7 @@ public class LoginSteps {
     @Quando("clica no botão que redireciona para o login")
     public void clicaNoBotãoQueRedirecionaParaOLogin() {
         loginPage.clickJaSouFlex();
+        assertionHelper.assertElementVisible(loginPage.getIptCpfOuEmail());
     }
 
     @E("informa o usuário e senha")
@@ -46,16 +44,11 @@ public class LoginSteps {
 
     @E("solicita o acesso")
     public void solicitoOAcesso() {
-//        loginPage.clickBtnEntrar();
+        loginPage.clickBtnEntrar();
     }
 
     @Então("o sistema deve realizar o login")
     public void oSistemaDeveRealizarOLogin() {
         assertionHelper.assertTwoElementDisplayed(loginPage.getBtnFecharModal(), homePage.getDisplayConsumption());
-    }
-
-    @AfterClass
-    public void quitDriver() {
-        Hooks.quitDriver();
     }
 }

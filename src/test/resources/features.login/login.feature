@@ -11,6 +11,6 @@ Funcionalidade: Login on the mobile app
     Então o sistema deve realizar o login
 
   @test
-  Cenario: Teste
+  Cenario: Cenario teste
     Dado que o usuário esta na pagina inicial do app
     Quando clica no botão que redireciona para o login

@@ -1,8 +1,8 @@
 package claro.flex.pages;
 
 import claro.flex.utils.Comandos;
+import claro.flex.utils.DriverManager;
 import claro.flex.utils.GetExcel;
-import claro.flex.utils.ScenarioContext;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -11,15 +11,15 @@ import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.sql.Driver;
+
 @Getter
 public class LoginPage {
     public Comandos comandosUtils;
-    public ScenarioContext scenarioContext;
 
 
     public LoginPage() {
-        scenarioContext = new ScenarioContext();
-        AppiumDriver driver = scenarioContext.getDriver();
+        AppiumDriver driver = DriverManager.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         comandosUtils = new Comandos(driver);
     }
@@ -57,7 +57,7 @@ public class LoginPage {
     private WebElement btnPrimeiroAcesso;
 
     @AndroidFindBy(id = "br.com.claro.flex.stg:id/bt_action")
-    @iOSXCUITFindBy(id = "khjkjhjkhkjhkjh")
+    @iOSXCUITFindBy(id = "")
     private WebElement btnFecharModal;
 
     public void aceitarPermissao() {

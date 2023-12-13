@@ -1,6 +1,6 @@
 package claro.flex.pages;
 
-import claro.flex.utils.ScenarioContext;
+import claro.flex.utils.DriverManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -11,11 +11,9 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class HomePage {
-    public ScenarioContext scenarioContext;
 
     public HomePage() {
-        scenarioContext = new ScenarioContext();
-        AppiumDriver driver = scenarioContext.getDriver();
+        AppiumDriver driver = DriverManager.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 

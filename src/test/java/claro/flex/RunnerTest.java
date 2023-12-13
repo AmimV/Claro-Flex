@@ -1,10 +1,10 @@
 package claro.flex;
 
-import claro.flex.utils.Hooks;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -15,9 +15,4 @@ import org.junit.runner.RunWith;
 )
 
 public class RunnerTest {
-
-    @BeforeClass
-    public static void getDriver() {
-        Hooks.getDriver();
-    }
 }

@@ -15,14 +15,17 @@ public class AssertionHelper {
 
     public static Comandos comandosUtils;
     private static WebDriverWait wait;
-    public ScenarioContext scenarioContext;
 
     public AssertionHelper() {
-        scenarioContext = new ScenarioContext();
-        AppiumDriver driver = scenarioContext.getDriver();
+        AppiumDriver driver = DriverManager.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         comandosUtils = new Comandos(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    }
+
+    public void assertElementVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        Assert.assertTrue(element.isDisplayed());
     }
 
     public void assertTwoElementDisplayed(WebElement element1, WebElement element2) {
